@@ -45,7 +45,7 @@ const wasmHelper = async (opts = {}, url, root) => {
         }
     }
     else {
-        const { readFile } = require("node:fs/promises");
+        const { readFile } = await import("node:fs/promises");
         const file = await readFile(root + url);
         result = await WebAssembly.instantiate(new Uint8Array(file), opts);
     }
